@@ -2,28 +2,28 @@
  * This is the test file
  */
 
-import { Model } from 'sequelize/types';
 import db from './db';
 import { Course } from './db/models/Course';
 import { User } from './db/models/User';
+import { Model } from 'sequelize';
 
-function runTest(instance: Model) {
-  console.log('\nInstance access using instance.name and instance.tableName')
+function runTest(instance: Model<any, any, any>, modelName: string) {
+  console.log('\nInstance access using instance.name and instance.tableName\n')
 
   console.log(
-    'instance.name: ' + (instance as any).name
+    `${modelName}.name: ${(instance as any).name}`
   )
   console.log(
-    'instance.tableName: ' + (instance as any).tableName
+    `${modelName}.tableName: ${(instance as any).tableName}`
   )
 
   console.log('\nInstance access using instance.constructor.name and instance.constructor.tableName\n')
 
   console.log(
-    'instance.constructor.name: ' + instance.constructor.name
+    `${modelName}.constructor.name: ${instance.constructor.name}`
   )
   console.log(
-    'instance.constructor.tableName: ' + (instance.constructor as any).tableName
+    `${modelName}.constructor.tableName: ${(instance.constructor as any).tableName}`
   )
 }
 
@@ -31,6 +31,7 @@ function runTest(instance: Model) {
   // await db.sync()
 
   // ______________________ Models Classes ___________________
+  console.log('---------------------- Testing Models Classes ----------------\n')
   console.log('\n\nStatic access using getTableName() (without Schema) :\n');
 
   console.log('Course.getTableName(): ' + Course.getTableName());
@@ -51,16 +52,12 @@ function runTest(instance: Model) {
   // ______________ Models instances _________________________
 
   console.log('\n----\n')
-
-  const course = Course.build({ name: 'Sequelize model name and tableName', description: 'Show clearly how to do it and the different options' });
+  console.log('--------------- Testing Models instances -----------------------\n')
 
   const user = User.build({ name: 'Mohamed Lamine Allal', email: 'allalmohamedlamine@gmail.com' });
 
-  console.log('\nTesting using  Class Extends Model definition :::: \n')
-  runTest(course);
-
   console.log('\n\nTesting using  sequelize.define() definition :::: \n')
-  runTest(user);
+  runTest(user as any, 'user');
 })()
 
 

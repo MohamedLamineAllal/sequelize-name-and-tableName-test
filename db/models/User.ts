@@ -1,14 +1,14 @@
-import { DataTypes } from 'sequelize';
+import { Sequelize } from 'sequelize';
 import sequelize from '..';
 
 export const User = sequelize.define('User', {
   // Model attributes are defined here
   firstName: {
-    type: DataTypes.STRING,
+    type: Sequelize.STRING,
     allowNull: false
   },
   lastName: {
-    type: DataTypes.STRING
+    type: Sequelize.STRING
     // allowNull defaults to true
   }
 }, {
