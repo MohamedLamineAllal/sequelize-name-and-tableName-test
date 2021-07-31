@@ -2,7 +2,6 @@
  * This is the test file
  */
 
-import db from './db';
 import { Course } from './db/models/Course';
 import { User } from './db/models/User';
 import { Model } from 'sequelize';
