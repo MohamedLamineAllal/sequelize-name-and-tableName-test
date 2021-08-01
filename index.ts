@@ -5,33 +5,33 @@
 import { Course } from './db/models/Course';
 import { User } from './db/models/User';
 
-function runTest(instance: any, modelName: string) {
+function runInstanceTest(instance: any, instanceName: string) {
   console.log('\nInstance access using instance.name and instance.tableName\n')
 
   console.log(
-    `${modelName}.name: ${instance.name}`
+    `${instanceName}.name: ${instance.name}`
   )
   console.log(
-    `${modelName}.tableName: ${instance.tableName}`
+    `${instanceName}.tableName: ${instance.tableName}`
   )
 
   console.log('\nInstance access using instance.constructor.name and instance.constructor.tableName\n')
 
   console.log(
-    `${modelName}.constructor.name: ${instance.constructor.name}`
+    `${instanceName}.constructor.name: ${instance.constructor.name}`
   )
   console.log(
-    `${modelName}.constructor.tableName: ${(instance.constructor as any).tableName}`
+    `${instanceName}.constructor.tableName: ${(instance.constructor as any).tableName}`
   )
 
-  // console.log('\nInstance access using instance.Model.name and instance.Model.tableName\n')
+  console.log('\nInstance access using instance.Model.name and instance.Model.tableName\n')
 
-  // console.log(
-  //   `${modelName}.Model.name: ${instance.Model.name}`
-  // )
-  // console.log(
-  //   `${modelName}.Model.tableName: ${(instance.Model as any).tableName}`
-  // )
+  console.log(
+    `${instanceName}.Model.name: ${instance.Model.name}`
+  )
+  console.log(
+    `${instanceName}.Model.tableName: ${(instance.Model as any).tableName}`
+  )
 }
 
 (async () => {
@@ -64,7 +64,7 @@ function runTest(instance: any, modelName: string) {
   const user = User.build({ name: 'Mohamed Lamine Allal', email: 'allalmohamedlamine@gmail.com' });
 
   console.log('\n\nTesting using  sequelize.define() definition :::: \n')
-  runTest(user as any, 'user');
+  runInstanceTest(user as any, 'user');
 })()
 
 
