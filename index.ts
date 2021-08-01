@@ -15,7 +15,7 @@ function runInstanceTest(instance: any, instanceName: string) {
     `${instanceName}.tableName: ${instance.tableName}`
   )
 
-  console.log('\nInstance access using instance.constructor.name and instance.constructor.tableName\n')
+  console.log('\nInstance access using instance.constructor.name and instance.constructor.tableName and getTableName()\n')
 
   console.log(
     `${instanceName}.constructor.name: ${instance.constructor.name}`
@@ -23,15 +23,18 @@ function runInstanceTest(instance: any, instanceName: string) {
   console.log(
     `${instanceName}.constructor.tableName: ${(instance.constructor as any).tableName}`
   )
-
-  console.log('\nInstance access using instance.Model.name and instance.Model.tableName\n')
-
   console.log(
-    `${instanceName}.Model.name: ${instance.Model.name}`
+    `${instanceName}.constructor.getTableName(): ${(instance.constructor as any).getTableName()}`
   )
-  console.log(
-    `${instanceName}.Model.tableName: ${(instance.Model as any).tableName}`
-  )
+
+  // console.log('\nInstance access using instance.Model.name and instance.Model.tableName\n')
+
+  // console.log(
+  //   `${instanceName}.Model.name: ${instance.Model.name}`
+  // )
+  // console.log(
+  //   `${instanceName}.Model.tableName: ${(instance.Model as any).tableName}`
+  // )
 }
 
 (async () => {
