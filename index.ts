@@ -16,13 +16,16 @@ function runInstanceTest(instance: Model, instanceName: string) {
     `${instanceName}.tableName: ${(instance as any).tableName}`
   )
   
-  console.log('\nInstance access using instance.constructor.name and instance.constructor.tableName\n')
+  console.log('\nInstance access using instance.constructor.name and instance.constructor.tableName and getTableName()\n')
   
   console.log(
     `${instanceName}.constructor.name: ${instance.constructor.name}`
   )
   console.log(
     `${instanceName}.constructor.tableName: ${(instance.constructor as any).tableName}`
+  )
+  console.log(
+    `${instanceName}.constructor.getTableName(): ${(instance.constructor as any).getTableName()}`
   )
 
   // console.log('\nInstance access using instance.Model.name and instance.Model.tableName\n')
@@ -39,7 +42,7 @@ function runInstanceTest(instance: Model, instanceName: string) {
   // await db.sync()
 
   // ______________________ Models Classes ___________________
-  console.log('--------------- Testing Models instances -----------------------\n')
+  console.log('--------------- Testing Models Classes -----------------------\n')
 
   console.log('\n\nStatic access using getTableName() (without Schema) :\n');
 
@@ -61,7 +64,7 @@ function runInstanceTest(instance: Model, instanceName: string) {
 
   // ______________ Models instances _________________________
 
-  console.log('---------------------- Testing Models Classes ----------------\n')
+  console.log('---------------------- Testing Models instances ----------------\n')
 
   const course = Course.build({ name: 'Sequelize model name and tableName', description: 'Show clearly how to do it and the different options' });
 
