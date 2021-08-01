@@ -4,16 +4,15 @@
 
 import { Course } from './db/models/Course';
 import { User } from './db/models/User';
-import { Model } from 'sequelize';
 
-function runTest(instance: Model<any, any, any>, modelName: string) {
+function runTest(instance: any, modelName: string) {
   console.log('\nInstance access using instance.name and instance.tableName\n')
 
   console.log(
-    `${modelName}.name: ${(instance as any).name}`
+    `${modelName}.name: ${instance.name}`
   )
   console.log(
-    `${modelName}.tableName: ${(instance as any).tableName}`
+    `${modelName}.tableName: ${instance.tableName}`
   )
 
   console.log('\nInstance access using instance.constructor.name and instance.constructor.tableName\n')
@@ -24,6 +23,15 @@ function runTest(instance: Model<any, any, any>, modelName: string) {
   console.log(
     `${modelName}.constructor.tableName: ${(instance.constructor as any).tableName}`
   )
+
+  // console.log('\nInstance access using instance.Model.name and instance.Model.tableName\n')
+
+  // console.log(
+  //   `${modelName}.Model.name: ${instance.Model.name}`
+  // )
+  // console.log(
+  //   `${modelName}.Model.tableName: ${(instance.Model as any).tableName}`
+  // )
 }
 
 (async () => {
